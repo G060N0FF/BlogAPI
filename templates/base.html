@@ -3,9 +3,31 @@
     <head>
         <title>BlogAPI</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            html {
+                font-family: 'Open Sans', sans-serif;
+                padding: 0px;
+                margin: 0px;
+            }
+            body {
+                padding: 0px;
+                margin: 0px;
+            }
+            .topnav {
+                position: absolute;
+                top: 0px;
+                background: #2F2FA2;
+                display: flex;
+                width: 100%;
+                align-items: center;
+                padding: 3px;
+            }
+        </style>
     </head>
     <body>
-        <h1>Test</h1>
+        <div class="topnav">
+            <h1>BlogAPI</h1>
+        </div>
         {% block content %}
         {% endblock %}
     </body>
