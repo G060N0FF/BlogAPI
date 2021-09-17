@@ -2,9 +2,8 @@ from django.shortcuts import render
 
 
 def index(request):
-    is_auth = request.user.is_authenticated
-    
     context = {
-        'is_auth': is_auth,
+        'is_auth': request.user.is_authenticated,
+        'user': request.user,
     }
     return render(request, 'App/index.html', context)
