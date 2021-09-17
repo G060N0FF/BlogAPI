@@ -20,13 +20,26 @@
                 display: flex;
                 width: 100%;
                 align-items: center;
-                padding: 3px;
+                padding: 10px;
+            }
+            .account-href {
+                border: 2px solid #F64C72;
+                margin: 5px;
+                margin-left: auto;
+                padding: 6px;
+                border-radius: 5px;
+                text-decoration: None;
+                color: white;
             }
         </style>
     </head>
     <body>
         <div class="topnav">
-            <h1>BlogAPI</h1>
+            {% if is_auth %}
+                <a href="#" class='account-href'>{{ user.username }}</a>
+            {% else %}
+                <a href='#' class='account-href'>Login</a>
+            {% endif %}
         </div>
         {% block content %}
         {% endblock %}
