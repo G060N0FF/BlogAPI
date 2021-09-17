@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    .login-form {
+        background: #2F2FA2;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+    }
+    label {
+        color: white;
+        font-size: 30px;
+    }
+    input {
+        height: 30px;
+    }
+    button {
+        border: 2px solid #F64C72;
+        padding: 6px;
+        border-radius: 5px;
+        text-decoration: None;
+        color: #F64C72;
+        background: #2F2FA2;
+        font-size: 20px;
+    }
+{% endblock %}
+
+{% block content %}
+    <div class='login-form'>
+        <form method='post' style='text-align: center;'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+        <br>
+        <a href="#" style='text-decoration: None; color: white;'>Don't have an account? Sign up here!</a>
+    </div>
+{% endblock %}

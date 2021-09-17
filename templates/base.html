@@ -24,7 +24,7 @@
                 padding: 6px;
                 border-radius: 5px;
                 text-decoration: None;
-                color: white;
+                color: #F64C72;
                 float: right;
                 margin: 35px 10px;
             }
@@ -33,11 +33,11 @@
     </head>
     <body>
         <div class="topnav">
-            <img src="{% get_media_prefix %}logo.png" height='70px' style="margin: 20px 10px;">
+            <a href='/'><img src="{% get_media_prefix %}logo.png" height='70px' style="margin: 20px 10px;"></a>
             {% if is_auth %}
                 <a href="#" class='account-href'>{{ user.username }}</a>
             {% else %}
-                <a href='#' class='account-href'>Login</a>
+                <a href='/accounts/login' class='account-href'>Login</a>
             {% endif %}
         </div>
         {% block content %}
