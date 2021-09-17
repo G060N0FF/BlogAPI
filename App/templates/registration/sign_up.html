@@ -25,16 +25,25 @@
         background: #2F2FA2;
         font-size: 20px;
     }
+    li {
+        display: None;
+    }
+    .helptext {
+        display: None;
+    }
+    .errorlist li {
+        display: inline !important;
+    }
 {% endblock %}
 
 {% block content %}
     <div class='login-form'>
-        <form method='post' style='text-align: center;'>
+        <form method='post' style='text-align: center;' action="{% url 'sign_up' %}">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Login</button>
+            <button type="submit">Sign up</button>
         </form>
         <br>
-        <a href="/sign_up" style='text-decoration: None; color: white;'>Don't have an account? Sign up here!</a>
+        <a href="/sign_up" style='text-decoration: None; color: white;'>Already have an account? Login here!</a>
     </div>
 {% endblock %}
