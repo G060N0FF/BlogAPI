@@ -1,4 +1,17 @@
 {% extends 'base.html' %}
 
+{% block style %}
+    .home-tab {
+        background: #2F2FA2;
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+    }
+{% endblock %}
+
 {% block content %}
+    <div class='home-tab'>
+        <h1 style='color: white;'>Welcome</h1>
+    </div>
 {% endblock %}
