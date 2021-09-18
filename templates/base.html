@@ -33,7 +33,7 @@
     </head>
     <body>
         <div class="topnav">
-            <a href='/'><img src="{% get_media_prefix %}logo.png" height='70px' style="margin: 20px 10px;"></a>
+            <a href='/'><img src="{% static 'img/logo.png' %}" height='70px' style="margin: 20px 10px;"></a>
             {% if is_auth %}
                 <a href="/accounts/logout?next=/" class='account-href'>{{ user.username }}</a>
             {% else %}
