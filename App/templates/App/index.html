@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block style %}
     .home-tab {
@@ -8,10 +9,23 @@
         justify-content: center;
         align-items: center;
     }
+    .api-button {
+        border: 2px solid #F64C72;
+        padding: 6px;
+        border-radius: 5px;
+        text-decoration: None;
+        color: #F64C72;
+        font-size: 20px;
+    }
 {% endblock %}
 
 {% block content %}
     <div class='home-tab'>
-        <h1 style='color: white;'>Welcome</h1>
+        <img src="{% static 'img/logo.png' %}" height="350px;">
+        <div>
+            <h1 style='color: white;'>Welcome to BlogAPI</h1>
+            <p style='color: white; font-size: 21px;'>Create and read blog posts or get existing ones <br>for your application using the API</p>
+            <a href='#' class='api-button'>View API endpoints</a>
+        </div>
     </div>
 {% endblock %}
