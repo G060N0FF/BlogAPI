@@ -18,8 +18,10 @@
                 align-items: center;
                 background: #2F2FA2;
                 width: 100%;
+                height: 115px;
             }
             .account-href {
+                background: #2F2FA2;
                 border: 2px solid #F64C72;
                 padding: 6px;
                 border-radius: 5px;
@@ -27,6 +29,18 @@
                 color: #F64C72;
                 float: right;
                 margin: 35px 10px;
+                font-size: 20px;
+            }
+            .dropdown-div {
+                display: None;
+            }
+            .dropdown {
+                margin: 10px;
+            }
+            .dropdown a{
+                color: #F64C72;
+                text-decoration: None;
+                border-top: 1px solid #F64C72;
             }
             {% block style %}{% endblock %}
         </style>
@@ -35,7 +49,10 @@
         <div class="topnav">
             <a href='/'><img src="{% static 'img/logo.png' %}" height='70px' style="margin: 20px 10px;"></a>
             {% if is_auth %}
-                <a href="/accounts/logout?next=/" class='account-href'>{{ user.username }}</a>
+                <button class='account-href' onclick="showDropdown()">{{ user.username }}</a>
+                <div class="dropdown-div">
+                    <div class='dropdown'><a href="/accounts/logout?next=/">Logout</a></div>
+                </div>
             {% else %}
                 <a href='/accounts/login' class='account-href'>Login</a>
             {% endif %}
@@ -43,4 +60,16 @@
         {% block content %}
         {% endblock %}
     </body>
+
+    <script>
+        function showDropdown(){
+            dropdownDiv = document.querySelector('.dropdown-div');
+            if(dropdownDiv.style.display == 'inline'){
+                dropdownDiv.style.display = '';
+            }
+            else{
+                dropdownDiv.style.display = 'inline';
+            }
+        }
+    </script>
 </html>
