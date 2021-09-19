@@ -32,5 +32,11 @@ def sign_up(request):
 def create_blog_post(request):
     form = BlogPostForm()
 
+    if request.method == 'POST':
+        form = BlogPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_blog = form.save()
+            return redirect('/blog/' + str(new_blog.pk))
+
     context = {'form': form}
     return render(request, 'App/create_blog_post.html', context)
