@@ -15,17 +15,24 @@
         padding: 6px;
         border-radius: 8px;
     }
+    .blog-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        flex-direction: column;
+    }
 {% endblock %}
 
 {% block content %}
     <div class='blog-picture'>
         <div class="blog-header">
-            <h1 style="color: #F64C72;">{{ blog.title }}</h1>
-            <h5 style="color: #F64C72;">{{ blog.date }}</h5>
-            <i style="float: right; color: #F64C72;">{{ blog.user }}</i>
-        </div>
-    </div>
-    <div>
-
+            <h1 style="color: white;">{{ blog.title }}</h1>
+            <h5 style="color: white;">{{ blog.get_category_display }} blog</h5>
+        </div></div>
+    <div class='blog-content'>
+        {{ blog.text|safe|linebreaks }}
+        <p style="float: right; border-top: 1px solid black;">{{ blog.date }}</p>
+        <i style="float: right;">{{ blog.user }}</i>
     </div>
 {% endblock %}
