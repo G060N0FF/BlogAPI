@@ -5,7 +5,7 @@
     .home-tab {
         background: #2F2FA2;
         display: flex;
-        height: 100vh;
+        min-height: 100vh;
         justify-content: center;
         align-items: center;
     }
@@ -27,10 +27,10 @@
 
 {% block content %}
     <div class='home-tab'>
-        <img src="{% static 'img/logo.png' %}" height="350px;">
+        <img src="{% static 'img/logo.png' %}" height="350px;" style="margin-top: 50px;">
         <div>
             <h1 style='color: white;'>Welcome to BlogAPI</h1>
-            <a href='#' class='btn'>Create a blog post</a>
+            <a href='/create_blog_post' class='btn'>Create a blog post</a>
             <br>
             <br>
             <a href='#' class='btn'>View API endpoints</a>

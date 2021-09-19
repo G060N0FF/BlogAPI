@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
+from .models import BlogPost
+from .forms import BlogPostForm
 
 
 def index(request):
@@ -23,3 +26,11 @@ def sign_up(request):
 
     context = {'form': form}
     return render(request, 'registration/sign_up.html', context)
+
+
+@login_required
+def create_blog_post(request):
+    form = BlogPostForm()
+
+    context = {'form': form}
+    return render(request, 'App/create_blog_post.html', context)

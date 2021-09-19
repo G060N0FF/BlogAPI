@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from ckeditor.fields import RichTextField
 
 blog_categories = (
     (1, 'Technology'),
@@ -22,4 +23,5 @@ class BlogPost(models.Model):
     title = models.CharField(max_length=30)
     image = models.ImageField(upload_to='blog_images')
     category = models.IntegerField(choices=blog_categories)
-    text = models.TextField()
+    text = RichTextField()
+    date = models.DateTimeField(auto_now_add=True)
