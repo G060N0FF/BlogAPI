@@ -36,7 +36,16 @@ def create_blog_post(request):
         form = BlogPostForm(request.POST, request.FILES)
         if form.is_valid():
             new_blog = form.save()
+            new_blog.user = request.user
+            new_blog.save()
             return redirect('/blog/' + str(new_blog.pk))
 
     context = {'form': form}
     return render(request, 'App/create_blog_post.html', context)
+
+
+def blog(request, id):
+    blog = BlogPost.objects.get(pk=id)
+
+    context={'blog': blog}
+    return render(request, 'App/blog.html', context)

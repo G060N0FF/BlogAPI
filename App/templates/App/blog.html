@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+    .blog-picture {
+        background: url("{{ blog.image.url }}") 50% fixed;
+        background-size: cover;
+        display: flex;
+        min-height: 100vh;
+        justify-content: center;
+        align-items: center;
+    }
+    .blog-header {
+        background: #2F2FA2;
+        padding: 6px;
+        border-radius: 8px;
+    }
+{% endblock %}
+
+{% block content %}
+    <div class='blog-picture'>
+        <div class="blog-header">
+            <h1 style="color: #F64C72;">{{ blog.title }}</h1>
+            <h5 style="color: #F64C72;">{{ blog.date }}</h5>
+            <i style="float: right; color: #F64C72;">{{ blog.user }}</i>
+        </div>
+    </div>
+    <div>
+
+    </div>
+{% endblock %}
