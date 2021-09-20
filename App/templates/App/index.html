@@ -27,12 +27,18 @@
         border-bottom: 2px solid black;
     }
     th {
-        width: 150px
+        width: 150px;
     }
     
     @media screen and (max-width: 600px) {
+        .home-tab img {
+            height: 200px;
+        }
         .home-tab {
             flex-direction: column;
+        }
+        th {
+            width: 80px;
         }
     }
 {% endblock %}
