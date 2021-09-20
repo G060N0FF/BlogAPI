@@ -7,9 +7,12 @@ from .forms import BlogPostForm
 
 
 def index(request):
+    blogs = BlogPost.objects.order_by('-date')
+
     context = {
         'is_auth': request.user.is_authenticated,
         'user': request.user,
+        'blogs': blogs,
     }
     return render(request, 'App/index.html', context)
 
@@ -47,5 +50,12 @@ def create_blog_post(request):
 def blog(request, id):
     blog = BlogPost.objects.get(pk=id)
 
-    context={'blog': blog}
+    context = {'blog': blog, 'user': request.user}
     return render(request, 'App/blog.html', context)
+
+
+@login_required
+def delete_blog(request, id):
+    blog = BlogPost.objects.get(pk=id)
+    blog.delete()
+    return redirect('/')

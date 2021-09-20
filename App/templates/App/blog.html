@@ -22,6 +22,15 @@
         min-height: 100vh;
         flex-direction: column;
     }
+
+    .btn {
+        border: 2px solid #F64C72;
+        padding: 6px;
+        border-radius: 5px;
+        text-decoration: None;
+        color: #F64C72;
+        font-size: 20px;
+    }
 {% endblock %}
 
 {% block content %}
@@ -29,6 +38,9 @@
         <div class="blog-header">
             <h1 style="color: white;">{{ blog.title }}</h1>
             <h5 style="color: white;">{{ blog.get_category_display }} blog</h5>
+            {% if blog.user == user %}
+                <a href="{% url 'delete_blog' blog.id %}" class="btn">Delete</a>
+            {% endif %}
         </div></div>
     <div class='blog-content'>
         {{ blog.text|safe|linebreaks }}

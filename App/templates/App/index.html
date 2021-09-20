@@ -17,6 +17,18 @@
         color: #F64C72;
         font-size: 20px;
     }
+    .blog-list {
+        display: flex;
+        min-height: 100vh;
+        justify-content: center;
+        align-items: center;
+    }
+    tr {
+        border-bottom: 2px solid black;
+    }
+    th {
+        width: 150px
+    }
     
     @media screen and (max-width: 600px) {
         .home-tab {
@@ -35,5 +47,24 @@
             <br>
             <a href='#' class='btn'>View API endpoints</a>
         </div>
+    </div>
+
+    <div class="blog-list">
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Author</th>
+                <th>Date posted</th>
+            </tr>
+            {% for blog in blogs %}
+                <tr>
+                    <td>{{ blog.title }}</td>
+                    <td>{{ blog.get_category_display }}</td>
+                    <td>{{ blog.user.username }}</td>
+                    <td>{{ blog.date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
 {% endblock %}
