@@ -64,7 +64,7 @@
                 <th>Date posted</th>
             </tr>
             {% for blog in blogs %}
-                <tr>
+                <tr style='cursor: pointer; cursor: hand;' onclick="window.location='/blog/{{ blog.id }}';">
                     <td>{{ blog.title }}</td>
                     <td>{{ blog.get_category_display }}</td>
                     <td>{{ blog.user.username }}</td>
