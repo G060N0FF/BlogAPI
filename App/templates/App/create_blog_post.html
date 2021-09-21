@@ -9,7 +9,6 @@
         flex-direction: column;
         min-height: 100vh;
         justify-content: center;
-        align-items: center;
         text-align: center;
     }
     .btn {
@@ -29,6 +28,18 @@
 
     .blog-form {
         margin-top: 150px;
+    }
+
+    @media screen and (max-width: 600px) {
+        .main input {
+            width: 315px !important;
+        }
+    }
+
+    @media screen and (min-width: 600px) {
+        .main {
+            align-items: center;
+        }
     }
 {% endblock %}
 
