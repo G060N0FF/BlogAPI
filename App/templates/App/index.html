@@ -22,12 +22,25 @@
         min-height: 100vh;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
     }
     tr {
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid #F64C72;
     }
     th {
         width: 150px;
+    }
+    td {
+        width: 150px;
+    }
+    #search {
+        width: 130px;
+        border-radius: 16px;
+        border: 2px solid #F64C72;
+        outline: None;
+    }
+    .category {
+        width: 130px;
     }
     
     @media screen and (max-width: 600px) {
@@ -39,6 +52,15 @@
         }
         th {
             width: 80px;
+        }
+        td {
+            width: 80px;
+        }
+        #search {
+            width: 70px;
+        }
+        .category {
+            width: 70px;
         }
     }
 {% endblock %}
@@ -58,6 +80,30 @@
     <div class="blog-list">
         <table>
             <tr>
+                <td>
+                    <select class="category" onchange="filterByCategory(this)">
+                        <option value="">Filter by category</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Music">Music</option>
+                        <option value="Lifestyle">Lifestyle</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Political">Political</option>
+                        <option value="Business">Business</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Movie">Movie</option>
+                        <option value="Car">Car</option>
+                        <option value="Gaming">Gaming</option>
+                    </select>
+                </td>
+                <td></td>
+                <td></td>
+                <td style="padding: 6px;">
+                    <input type="text" id="search" placeholder="Search for blogs" onchange="search(this)">
+                </td>
+            </tr>
+            <tr>
                 <th>Title</th>
                 <th>Category</th>
                 <th>Author</th>
@@ -73,4 +119,61 @@
             {% endfor %}
         </table>
     </div>
+
+    <!--Filter posts-->
+    <script>
+        const allRows = document.querySelectorAll('tr');
+
+        // filter by search field
+        function search(input){
+            // empty the table
+            let table = document.querySelector('tbody');
+            table.innerHTML = '';
+
+            // add the needed rows
+            for (let i = 0; i < allRows.length; i++) {
+                let currRow = allRows[i];
+
+                if (i == 0 || i == 1) {
+                    table.appendChild(currRow);
+                }
+                else {
+                    if (currRow.children[0].textContent.toLowerCase().includes(input.value.toLowerCase())) {
+                        table.appendChild(currRow);
+                    }
+                    else if (currRow.children[1].textContent.toLowerCase().includes(input.value.toLowerCase())) {
+                        table.appendChild(currRow);
+                    }
+                    else if (currRow.children[2].textContent.toLowerCase().includes(input.value.toLowerCase())) {
+                        table.appendChild(currRow);
+                    }
+                    else if (currRow.children[3].textContent.toLowerCase().includes(input.value.toLowerCase())) {
+                        table.appendChild(currRow);
+                    }
+                }
+            }
+        }
+
+        // filter by category
+        function filterByCategory(select){
+            // empty the table
+            let table = document.querySelector('tbody');
+            table.innerHTML = '';
+
+            // add the needed rows
+            for (let i = 0; i < allRows.length; i++) {
+                let currRow = allRows[i];
+
+                if (i == 0 || i == 1) {
+                    table.appendChild(currRow);
+                }
+                else if (currRow.children[1].textContent == select.value) {
+                    table.appendChild(currRow);
+                }
+                else if (!select.value) {
+                    table.appendChild(currRow);
+                }
+            }
+        }
+    </script>
 {% endblock %}
