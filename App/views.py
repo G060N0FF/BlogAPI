@@ -39,6 +39,7 @@ def create_blog_post(request):
         form = BlogPostForm(request.POST, request.FILES)
         if form.is_valid():
             new_blog = form.save()
+            # set the blog poster
             new_blog.user = request.user
             new_blog.save()
             return redirect('/blog/' + str(new_blog.pk))
@@ -57,5 +58,9 @@ def blog(request, id):
 @login_required
 def delete_blog(request, id):
     blog = BlogPost.objects.get(pk=id)
-    blog.delete()
+
+    # check if the blog post owner matches the request
+    if blog.user == request.user:
+        blog.delete()
+        
     return redirect('/')
